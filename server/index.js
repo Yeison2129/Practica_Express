@@ -1,7 +1,12 @@
 import express from 'express'; 
 import {PORT} from './config.js';
+import indexRoutes from './routes/index.routes.js'
 
 const app = express();
 
-app.listen(PORT);
-console.log(`Corre el servidor en el puerto ${PORT}`+`:D`);
+app.use(indexRoutes)
+
+
+app.listen(PORT,()=>{
+  console.log(`Corre el servidor en el puerto ${PORT}`+`:D`);
+});

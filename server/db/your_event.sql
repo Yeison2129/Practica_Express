@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2022 a las 17:10:34
+-- Tiempo de generación: 16-11-2022 a las 16:35:26
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 -- Base de datos: `your_event`
 --
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `borrar_u` (`id_user1` INT(10))   DELETE FROM users WHERE id_user = id_user1$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `consultar` ()   SELECT * FROM users$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_u` (IN `id_user1` INT(10), IN `nom_user1` VARCHAR(30), IN `mail_user1` VARCHAR(50), IN `password_user1` VARCHAR(30))   INSERT INTO users (id_user ,nom_user ,mail_user,password_user ) VALUES (id_user1,nom_user1,mail_user1,password_user1)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_u` (`id_user1` INT(10), `nom_user1` VARCHAR(30))   UPDATE users SET nom_user=nom_user1 WHERE id_user=id_user1$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -33,6 +47,13 @@ CREATE TABLE `users` (
   `mail_user` varchar(50) DEFAULT NULL,
   `password_user` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_user`, `nom_user`, `mail_user`, `password_user`) VALUES
+(12, 'juan', 'juan@', 'sadasd');
 
 --
 -- Índices para tablas volcadas
