@@ -10,7 +10,7 @@ const app = express();
 app.use(indexRoutes);
 app.use(taskRoutes);
 
-app.use(json())
+app.use(express.json())
 
 app.listen(PORT, () => {
   console.log(`Corre el servidor en el puerto ${PORT}` + `:D`);
